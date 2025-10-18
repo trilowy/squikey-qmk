@@ -5,8 +5,8 @@
 QMK firmware for the Squikey keyboard, a 4x6+5 handwired keyboard with hotswap MX switches.
 
 * Keyboard Maintainer: [Trilowy](https://github.com/trilowy)
-* Hardware Supported: *The PCBs, controllers supported*
-* Hardware Availability: *Links to where you can find this hardware*
+* Hardware Supported: Pro Micro RP2040
+* Hardware Availability: TODO list of components
 
 
 ## How to install it?
@@ -21,17 +21,17 @@ Once QMK setup is done, clone this repository inside your existing [qmk_firmware
 git submodule add https://github.com/trilowy/squikey-qmk.git keyboards/handwired/squikey
 ```
 
-Build the default keymap:
+To flash the default keymap, unplug the keyboard and launch:
 
 ```sh
-make handwired/squikey:default
+qmk flash -kb handwired/squikey -km default
 ```
 
-Flash the default keymap:
+When the message `Waiting for drive to deploy...` appears, hold the "boot" button while plugging the keyboard, to go into bootloader mode.
 
-```sh
-make handwired/squikey:default:flash
-```
+It should see the keyboard as a USB drive and flash it.
+
+Unplug and plug the keyboard and enjoy!
 
 
 ## Bootloader
