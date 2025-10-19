@@ -13,7 +13,7 @@
     },
     "usb": {
         "device_version": "1.0.0",
-        "pid": "0x0000",
+        "pid": "0x5677",
         "vid": "0xFEED"
     },
     "matrix_pins": {
@@ -23,8 +23,7 @@
     "split": {
         "enabled": true,
         "serial": {
-            "driver": "vendor",
-            "pin": "GP2"
+            "driver": "vendor"
         }
     },
     "layouts": {
