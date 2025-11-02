@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_H
 
-#include "keymap_ergol.h"
+#include "sendstring_ergol.h"
 
 enum layers {
     _BASE = 0,
@@ -11,6 +11,24 @@ enum layers {
     _NAV = 2,
     _NUM = 3,
 };
+
+enum custom_keycodes {
+    SS_HELLO = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SS_HELLO:
+            if (record->event.pressed) {
+                // when keycode SS_HELLO is pressed
+                SEND_STRING(" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+            } else {
+                // when keycode SS_HELLO is released
+            }
+            break;
+    }
+    return true;
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /*
@@ -36,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LGUI, EL_Z,    EL_X,    EL_MINS, EL_V,    EL_B,             EL_DOT,  EL_H,    EL_G,    EL_COMM, EL_K,    KC_LALT,
 
          LCTL_T(KC_DEL), LT(_NAV,KC_SPC), LALT_T(KC_BSPC),             KC_LSFT, MO(_SYM), LT(_NUM,KC_ESC),
-                                       KC_SPC, C(KC_BSPC),             KC_SPC,  KC_RALT
+                                       SS_HELLO, C(KC_BSPC),             KC_SPC,  KC_RALT
     ),
 
      /*
